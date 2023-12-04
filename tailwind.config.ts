@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -6,15 +6,25 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
+    screens: {
+      xs: '500px',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1440px',
+      '3xl': '1780px',
+      '4xl': '2160px', // only need to control product grid mode in ultra 4k device
+    },
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        body: '#868c98',
+        dark: '#252931',
       },
     },
   },
-  plugins: [],
-}
-export default config
+  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
+};
+export default config;
