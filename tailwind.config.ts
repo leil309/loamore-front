@@ -20,8 +20,11 @@ const config: Config = {
     },
     extend: {
       colors: {
-        body: '#868c98',
+        body: '#f5f7f9',
+        'body-dark': '#252931',
         dark: '#252931',
+        'card-dark': '#1c1f26',
+        card: '#fdfdfd',
       },
     },
   },

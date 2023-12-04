@@ -7,7 +7,7 @@ const RootHeader = () => {
 
   return (
     <header>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between p-2">
         <span className="text-2xl text-amber-50">LOA MORE</span>
         {isMounted && theme === 'light' ? (
           <button onClick={() => setTheme('dark')}>

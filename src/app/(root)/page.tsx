@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import DarkModeButton from '@/components/common/darkMode';
+import CharacterCard from '@/components/cards/character-card';
+import characterList from '@/components/cards/character-list';
+import CharacterList from '@/components/cards/character-list';
 
 export default function Home() {
   return (
     <main className="p-5">
-      <span>TEST MAIN2</span>
-      <DarkModeButton />
+      <CharacterList />
     </main>
   );
 }
