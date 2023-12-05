@@ -6,13 +6,14 @@ import React from 'react';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="bg-white dark:bg-dark">
-      <div className="relative flex max-w-screen-4xl justify-between">
-        <div>
+      <div className="relative flex min-h-screen max-w-screen-4xl justify-between">
+        <div className="dark:bg-character-dark flex flex-col bg-card">
           <RootMenu />
         </div>
+
         <div className="flex flex-1 flex-col">
           <RootHeader />
-          <div className="flex flex-1 flex-row bg-body dark:bg-body-dark">
+          <div className="flex flex-1 flex-row bg-body pl-2 dark:bg-body-dark">
             {children}
           </div>
           <footer>

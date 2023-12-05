@@ -13,9 +13,14 @@ const RootHeader = () => {
   return (
     <header className="sticky top-0 z-50">
       <div className="dark: dark:bg-character-dark/70 flex h-16 flex-row justify-between bg-white/70 backdrop-blur-md">
-        <div></div>
-        <div className="flex items-center">
-          <span>검색창</span>
+        <div className="w-full self-center pl-5">
+          <form>
+            <input
+              className="w-full rounded-lg border border-gray-200 px-4 py-3 caret-gray-400 focus:border-gray-200 focus:ring-0 dark:border-gray-800 dark:bg-dark"
+              type="text"
+              placeholder="캐릭터 검색"
+            />
+          </form>
         </div>
         <div className="flex items-center">
           <button className="hidden cursor-pointer px-4 text-xl hover:text-cyan-700 dark:hover:text-cyan-700 md:block">
