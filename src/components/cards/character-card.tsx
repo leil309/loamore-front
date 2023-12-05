@@ -17,12 +17,10 @@ const characterCard = ({
   battleLevel,
 }: CharacterCardProps) => {
   return (
-    <div className="flex w-52 max-w-md flex-col overflow-hidden rounded-md bg-card shadow-lg dark:bg-card-dark">
+    <div className="flex w-52 max-w-md cursor-pointer flex-col overflow-hidden rounded-md bg-card shadow-lg transition-transform hover:scale-105 dark:bg-card-dark">
       <div className="relative h-36">
         <Image
-          src={
-            'https://img.lostark.co.kr/armory/6/bf1f03a0ed13f9998b003ebe215af411f9f42cbf76b875ba180b146e57bccce5.png?v=20230918122933'
-          }
+          src={imgUrl}
           alt="Picture of the author"
           fill={true}
           style={{
