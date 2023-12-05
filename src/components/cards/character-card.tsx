@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import coverImage from '../../../public/cover-bg.jpg';
 
 type CharacterCardProps = {
   imgUrl: string;
@@ -25,8 +24,10 @@ const characterCard = ({
           }
           alt="Picture of the author"
           fill={true}
-          objectPosition={'0px 0px'}
-          objectFit={'cover'}
+          style={{
+            objectPosition: '0px 0px',
+            objectFit: 'cover',
+          }}
         />
       </div>
       <span>{name}</span>

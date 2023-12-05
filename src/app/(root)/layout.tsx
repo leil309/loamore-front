@@ -5,12 +5,15 @@ import React from 'react';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="dark:bg-dark bg-amber-200">
-      <div className="max-w-screen-4xl relative flex min-h-screen justify-between">
-        <RootMenu />
+    <div className="bg-white dark:bg-dark">
+      <div className="relative flex min-h-screen max-w-screen-4xl justify-between">
+        <div className="flex flex-col bg-body pr-2 dark:bg-body-dark">
+          <RootMenu />
+        </div>
+
         <div className="flex flex-1 flex-col">
           <RootHeader />
-          <div className="bg-body dark:bg-body-dark flex flex-1 flex-row">
+          <div className="flex flex-1 flex-row bg-body dark:bg-body-dark">
             {children}
           </div>
           <footer>
