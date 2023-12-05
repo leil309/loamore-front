@@ -9,7 +9,7 @@ type CharacterCardProps = {
   battleLevel: string;
 };
 
-const characterCard = ({
+const CharacterCard = ({
   imgUrl,
   name,
   classType,
@@ -51,4 +51,4 @@ const characterCard = ({
     </div>
   );
 };
-export default characterCard;
+export default CharacterCard;

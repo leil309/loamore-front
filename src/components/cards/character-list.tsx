@@ -8,7 +8,7 @@ type tempCharacter = {
   battleLevel: string;
 };
 
-const characterList = () => {
+const CharacterList = () => {
   const cl = [
     {
       imgUrl:
@@ -76,10 +76,10 @@ const characterList = () => {
     },
   ];
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap gap-y-4">
       {cl.map((x, index) => {
         return (
-          <div key={index} className="mb-3 ml-3">
+          <div key={index} className="w-1/5 px-2">
             <CharacterCard
               imgUrl={x.imgUrl}
               name={x.name}
@@ -93,4 +93,4 @@ const characterList = () => {
     </div>
   );
 };
-export default characterList;
+export default CharacterList;

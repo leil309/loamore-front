@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="bg-white dark:bg-dark">
       <div className="relative flex min-h-screen max-w-screen-4xl justify-between">
-        <div className="dark:bg-character-dark flex flex-col bg-card">
+        <div className="flex flex-col bg-card dark:bg-character-dark">
           <RootMenu />
         </div>
 

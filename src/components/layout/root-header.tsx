@@ -12,8 +12,8 @@ const RootHeader = () => {
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="dark: dark:bg-character-dark/70 flex h-16 flex-row justify-between bg-white/70 backdrop-blur-md">
-        <div className="w-full self-center pl-5">
+      <div className="dark: flex h-16 flex-row justify-between bg-white/70 backdrop-blur-md dark:bg-character-dark/70">
+        <div className="w-full self-center pl-4">
           <form>
             <input
               className="w-full rounded-lg border border-gray-200 px-4 py-3 caret-gray-400 focus:border-gray-200 focus:ring-0 dark:border-gray-800 dark:bg-dark"
