@@ -1,8 +1,10 @@
 import {
+  useMutation,
   useQuery,
   useSuspenseQuery,
   useInfiniteQuery,
   useSuspenseInfiniteQuery,
+  UseMutationOptions,
   UseQueryOptions,
   UseSuspenseQueryOptions,
   UseInfiniteQueryOptions,
@@ -372,6 +374,325 @@ export enum IUseYn {
   Y = 'Y',
 }
 
+export type IUpsertCharacterMutationVariables = Exact<{
+  args: Scalars['String']['input'];
+}>;
+
+export type IUpsertCharacterMutation = {
+  upsertCharacter: {
+    data?: {
+      attack_power: number;
+      charisma: number;
+      class: string;
+      courage: number;
+      critical: number;
+      domination: number;
+      endurance: number;
+      expertise: number;
+      guild_name?: string | null;
+      id: any;
+      image_uri: string;
+      ins_date: any;
+      item_level: number;
+      kindness: number;
+      level: number;
+      max_health: number;
+      name: string;
+      server_name: string;
+      specialization: number;
+      swiftness: number;
+      upd_date: any;
+      wisdom: number;
+      character_accessory?: Array<{
+        additional_effect?: string | null;
+        base_effect?: string | null;
+        bracelet_effect?: string | null;
+        engraving?: string | null;
+        id: any;
+        quality: number;
+        slot: number;
+        item: {
+          name: string;
+          image_uri: string;
+          grade?: number | null;
+          set_name?: string | null;
+          tier?: number | null;
+          id: any;
+        };
+      }> | null;
+      character_engraving?: Array<{
+        id: any;
+        level: number;
+        slot: number;
+        engraving: {
+          class_yn: IClassYn;
+          id: any;
+          image_uri: string;
+          info: string;
+          name: string;
+        };
+      }> | null;
+      character_gear?: Array<{
+        base_effect?: string | null;
+        honing: number;
+        id: any;
+        quality: number;
+        slot: number;
+        additional_effect?: string | null;
+        item: {
+          id: any;
+          image_uri: string;
+          name: string;
+          set_name?: string | null;
+          tier?: number | null;
+          grade?: number | null;
+        };
+      }> | null;
+      character_gem?: Array<{
+        direction: string;
+        effect_type: string;
+        id: any;
+        level: number;
+        rate: number;
+        skill_id: any;
+        slot: number;
+        skill: { image_uri: string; name: string; id: any };
+        item: {
+          id: any;
+          grade?: number | null;
+          image_uri: string;
+          name: string;
+          set_name?: string | null;
+          tier?: number | null;
+        };
+      }> | null;
+      character_skill?: Array<{
+        attack_type?: string | null;
+        counter_yn: ICharacterSkillCounterYn;
+        id: any;
+        level?: number | null;
+        rune_id?: any | null;
+        stagger_value?: string | null;
+        super_armor?: string | null;
+        weak_point?: number | null;
+        character_skill_tripod?: Array<{
+          level?: number | null;
+          selected_yn: ISelectedYn;
+          tripod: {
+            name: string;
+            image_uri: string;
+            slot: number;
+            tier: number;
+          };
+        }> | null;
+        skill: {
+          class: string;
+          id: any;
+          image_uri: string;
+          name: string;
+          tripod?: Array<{
+            id: any;
+            image_uri: string;
+            name: string;
+            slot: number;
+            tier: number;
+          }> | null;
+        };
+      }> | null;
+    } | null;
+  };
+};
+
+export type IFindCharacterQueryVariables = Exact<{
+  name: Scalars['String']['input'];
+}>;
+
+export type IFindCharacterQuery = {
+  findCharacter: {
+    data?: {
+      attack_power: number;
+      charisma: number;
+      class: string;
+      courage: number;
+      critical: number;
+      domination: number;
+      endurance: number;
+      expertise: number;
+      guild_name?: string | null;
+      id: any;
+      image_uri: string;
+      ins_date: any;
+      item_level: number;
+      kindness: number;
+      level: number;
+      max_health: number;
+      name: string;
+      server_name: string;
+      specialization: number;
+      swiftness: number;
+      upd_date: any;
+      wisdom: number;
+      character_accessory?: Array<{
+        additional_effect?: string | null;
+        base_effect?: string | null;
+        bracelet_effect?: string | null;
+        engraving?: string | null;
+        id: any;
+        quality: number;
+        slot: number;
+        item: {
+          name: string;
+          image_uri: string;
+          grade?: number | null;
+          set_name?: string | null;
+          tier?: number | null;
+          id: any;
+        };
+      }> | null;
+      character_engraving?: Array<{
+        id: any;
+        level: number;
+        slot: number;
+        engraving: {
+          class_yn: IClassYn;
+          id: any;
+          image_uri: string;
+          info: string;
+          name: string;
+        };
+      }> | null;
+      character_gear?: Array<{
+        base_effect?: string | null;
+        honing: number;
+        id: any;
+        quality: number;
+        slot: number;
+        additional_effect?: string | null;
+        item: {
+          id: any;
+          image_uri: string;
+          name: string;
+          set_name?: string | null;
+          tier?: number | null;
+          grade?: number | null;
+        };
+      }> | null;
+      character_gem?: Array<{
+        direction: string;
+        effect_type: string;
+        id: any;
+        level: number;
+        rate: number;
+        skill_id: any;
+        slot: number;
+        skill: { image_uri: string; name: string; id: any };
+        item: {
+          id: any;
+          grade?: number | null;
+          image_uri: string;
+          name: string;
+          set_name?: string | null;
+          tier?: number | null;
+        };
+      }> | null;
+      character_skill?: Array<{
+        attack_type?: string | null;
+        counter_yn: ICharacterSkillCounterYn;
+        id: any;
+        level?: number | null;
+        rune_id?: any | null;
+        stagger_value?: string | null;
+        super_armor?: string | null;
+        weak_point?: number | null;
+        character_skill_tripod?: Array<{
+          level?: number | null;
+          selected_yn: ISelectedYn;
+          tripod: {
+            name: string;
+            image_uri: string;
+            slot: number;
+            tier: number;
+          };
+        }> | null;
+        skill: {
+          class: string;
+          id: any;
+          image_uri: string;
+          name: string;
+          tripod?: Array<{
+            id: any;
+            image_uri: string;
+            name: string;
+            slot: number;
+            tier: number;
+          }> | null;
+        };
+      }> | null;
+    } | null;
+  };
+};
+
+export type IFindCharacterRankingQueryVariables = Exact<{
+  cursor?: InputMaybe<Scalars['BigInt']['input']>;
+  take?: InputMaybe<Scalars['Int']['input']>;
+  className?: InputMaybe<
+    Array<Scalars['String']['input']> | Scalars['String']['input']
+  >;
+  engravingIds?: InputMaybe<
+    Array<Scalars['BigInt']['input']> | Scalars['BigInt']['input']
+  >;
+}>;
+
+export type IFindCharacterRankingQuery = {
+  findCharacterRanking: Array<{
+    classEngraving?: Array<string> | null;
+    className: string;
+    guildName?: string | null;
+    id: any;
+    imageUri: string;
+    insDate: any;
+    itemLevel: number;
+    name: string;
+    serverName: string;
+    setItem?: Array<string> | null;
+    updDate: any;
+  }>;
+};
+
+export type IFindAverageEngravingQueryVariables = Exact<{
+  name: Scalars['String']['input'];
+}>;
+
+export type IFindAverageEngravingQuery = {
+  findAverageEngraving: Array<{
+    count: number;
+    engraving: Array<{
+      name: string;
+      image_uri: string;
+      id: any;
+      class_yn: IClassYn;
+      level: number;
+    }>;
+  }>;
+};
+
+export type IFindAverageStatsQueryVariables = Exact<{
+  name: Scalars['String']['input'];
+}>;
+
+export type IFindAverageStatsQuery = {
+  findAverageStats: Array<{
+    name: string;
+    stats: Array<{ name: string; value: number }>;
+  }>;
+};
+
+export type IFindAverageWeaponQueryVariables = Exact<{
+  name: Scalars['String']['input'];
+}>;
+
+export type IFindAverageWeaponQuery = { findAverageWeapon: number };
+
 export type IFindClassQueryVariables = Exact<{ [key: string]: never }>;
 
 export type IFindClassQuery = {
@@ -382,6 +703,966 @@ export type IFindClassQuery = {
     type: string;
     engraving?: Array<{ name: string; id: any; image_uri: string }> | null;
   }>;
+};
+
+export const UpsertCharacterDocument = `
+    mutation UpsertCharacter($args: String!) {
+  upsertCharacter(args: $args) {
+    data {
+      attack_power
+      character_accessory {
+        additional_effect
+        base_effect
+        bracelet_effect
+        engraving
+        id
+        item {
+          name
+          image_uri
+          grade
+          set_name
+          tier
+          id
+        }
+        quality
+        slot
+      }
+      character_engraving {
+        engraving {
+          class_yn
+          id
+          image_uri
+          info
+          name
+        }
+        id
+        level
+        slot
+      }
+      character_gear {
+        base_effect
+        honing
+        id
+        item {
+          id
+          image_uri
+          name
+          set_name
+          tier
+          grade
+        }
+        quality
+        slot
+        additional_effect
+      }
+      character_gem {
+        direction
+        effect_type
+        id
+        level
+        rate
+        skill {
+          image_uri
+          name
+          id
+        }
+        skill_id
+        slot
+        item {
+          id
+          grade
+          image_uri
+          name
+          set_name
+          tier
+        }
+      }
+      character_skill {
+        attack_type
+        character_skill_tripod {
+          level
+          selected_yn
+          tripod {
+            name
+            image_uri
+            slot
+            tier
+          }
+        }
+        counter_yn
+        id
+        level
+        rune_id
+        skill {
+          class
+          id
+          image_uri
+          name
+          tripod {
+            id
+            image_uri
+            name
+            slot
+            tier
+          }
+        }
+        stagger_value
+        super_armor
+        weak_point
+      }
+      charisma
+      class
+      courage
+      critical
+      domination
+      endurance
+      expertise
+      guild_name
+      id
+      image_uri
+      ins_date
+      item_level
+      kindness
+      level
+      max_health
+      name
+      server_name
+      specialization
+      swiftness
+      upd_date
+      wisdom
+    }
+  }
+}
+    `;
+
+export const useUpsertCharacterMutation = <
+  TError = unknown,
+  TContext = unknown,
+>(
+  options?: UseMutationOptions<
+    IUpsertCharacterMutation,
+    TError,
+    IUpsertCharacterMutationVariables,
+    TContext
+  >,
+) => {
+  return useMutation<
+    IUpsertCharacterMutation,
+    TError,
+    IUpsertCharacterMutationVariables,
+    TContext
+  >({
+    mutationKey: ['UpsertCharacter'],
+    mutationFn: (variables?: IUpsertCharacterMutationVariables) =>
+      gqlFetcher<IUpsertCharacterMutation, IUpsertCharacterMutationVariables>(
+        UpsertCharacterDocument,
+        variables,
+      )(),
+    ...options,
+  });
+};
+
+export const FindCharacterDocument = `
+    query FindCharacter($name: String!) {
+  findCharacter(name: $name) {
+    data {
+      attack_power
+      character_accessory {
+        additional_effect
+        base_effect
+        bracelet_effect
+        engraving
+        id
+        item {
+          name
+          image_uri
+          grade
+          set_name
+          tier
+          id
+        }
+        quality
+        slot
+      }
+      character_engraving {
+        engraving {
+          class_yn
+          id
+          image_uri
+          info
+          name
+        }
+        id
+        level
+        slot
+      }
+      character_gear {
+        base_effect
+        honing
+        id
+        item {
+          id
+          image_uri
+          name
+          set_name
+          tier
+          grade
+        }
+        quality
+        slot
+        additional_effect
+      }
+      character_gem {
+        direction
+        effect_type
+        id
+        level
+        rate
+        skill {
+          image_uri
+          name
+          id
+        }
+        skill_id
+        slot
+        item {
+          id
+          grade
+          image_uri
+          name
+          set_name
+          tier
+        }
+      }
+      character_skill {
+        attack_type
+        character_skill_tripod {
+          level
+          selected_yn
+          tripod {
+            name
+            image_uri
+            slot
+            tier
+          }
+        }
+        counter_yn
+        id
+        level
+        rune_id
+        skill {
+          class
+          id
+          image_uri
+          name
+          tripod {
+            id
+            image_uri
+            name
+            slot
+            tier
+          }
+        }
+        stagger_value
+        super_armor
+        weak_point
+      }
+      charisma
+      class
+      courage
+      critical
+      domination
+      endurance
+      expertise
+      guild_name
+      id
+      image_uri
+      ins_date
+      item_level
+      kindness
+      level
+      max_health
+      name
+      server_name
+      specialization
+      swiftness
+      upd_date
+      wisdom
+    }
+  }
+}
+    `;
+
+export const useFindCharacterQuery = <
+  TData = IFindCharacterQuery,
+  TError = unknown,
+>(
+  variables: IFindCharacterQueryVariables,
+  options?: Omit<
+    UseQueryOptions<IFindCharacterQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseQueryOptions<IFindCharacterQuery, TError, TData>['queryKey'];
+  },
+) => {
+  return useQuery<IFindCharacterQuery, TError, TData>({
+    queryKey: ['FindCharacter', variables],
+    queryFn: gqlFetcher<IFindCharacterQuery, IFindCharacterQueryVariables>(
+      FindCharacterDocument,
+      variables,
+    ),
+    ...options,
+  });
+};
+
+export const useSuspenseFindCharacterQuery = <
+  TData = IFindCharacterQuery,
+  TError = unknown,
+>(
+  variables: IFindCharacterQueryVariables,
+  options?: Omit<
+    UseSuspenseQueryOptions<IFindCharacterQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseQueryOptions<
+      IFindCharacterQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseQuery<IFindCharacterQuery, TError, TData>({
+    queryKey: ['FindCharacterSuspense', variables],
+    queryFn: gqlFetcher<IFindCharacterQuery, IFindCharacterQueryVariables>(
+      FindCharacterDocument,
+      variables,
+    ),
+    ...options,
+  });
+};
+
+export const useInfiniteFindCharacterQuery = <
+  TData = InfiniteData<IFindCharacterQuery>,
+  TError = unknown,
+>(
+  variables: IFindCharacterQueryVariables,
+  options: Omit<
+    UseInfiniteQueryOptions<IFindCharacterQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseInfiniteQueryOptions<
+      IFindCharacterQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useInfiniteQuery<IFindCharacterQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey: optionsQueryKey ?? ['FindCharacter.infinite', variables],
+        queryFn: (metaData) =>
+          gqlFetcher<IFindCharacterQuery, IFindCharacterQueryVariables>(
+            FindCharacterDocument,
+            { ...variables, ...(metaData.pageParam ?? {}) },
+          )(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const useSuspenseInfiniteFindCharacterQuery = <
+  TData = InfiniteData<IFindCharacterQuery>,
+  TError = unknown,
+>(
+  variables: IFindCharacterQueryVariables,
+  options: Omit<
+    UseSuspenseInfiniteQueryOptions<IFindCharacterQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseInfiniteQueryOptions<
+      IFindCharacterQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseInfiniteQuery<IFindCharacterQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey: optionsQueryKey ?? [
+          'FindCharacter.infiniteSuspense',
+          variables,
+        ],
+        queryFn: (metaData) =>
+          gqlFetcher<IFindCharacterQuery, IFindCharacterQueryVariables>(
+            FindCharacterDocument,
+            { ...variables, ...(metaData.pageParam ?? {}) },
+          )(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const FindCharacterRankingDocument = `
+    query FindCharacterRanking($cursor: BigInt, $take: Int, $className: [String!], $engravingIds: [BigInt!]) {
+  findCharacterRanking(
+    cursor: $cursor
+    take: $take
+    className: $className
+    engravingIds: $engravingIds
+  ) {
+    classEngraving
+    className
+    guildName
+    id
+    imageUri
+    insDate
+    itemLevel
+    name
+    serverName
+    setItem
+    updDate
+  }
+}
+    `;
+
+export const useFindCharacterRankingQuery = <
+  TData = IFindCharacterRankingQuery,
+  TError = unknown,
+>(
+  variables?: IFindCharacterRankingQueryVariables,
+  options?: Omit<
+    UseQueryOptions<IFindCharacterRankingQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseQueryOptions<
+      IFindCharacterRankingQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useQuery<IFindCharacterRankingQuery, TError, TData>({
+    queryKey:
+      variables === undefined
+        ? ['FindCharacterRanking']
+        : ['FindCharacterRanking', variables],
+    queryFn: gqlFetcher<
+      IFindCharacterRankingQuery,
+      IFindCharacterRankingQueryVariables
+    >(FindCharacterRankingDocument, variables),
+    ...options,
+  });
+};
+
+export const useSuspenseFindCharacterRankingQuery = <
+  TData = IFindCharacterRankingQuery,
+  TError = unknown,
+>(
+  variables?: IFindCharacterRankingQueryVariables,
+  options?: Omit<
+    UseSuspenseQueryOptions<IFindCharacterRankingQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseQueryOptions<
+      IFindCharacterRankingQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseQuery<IFindCharacterRankingQuery, TError, TData>({
+    queryKey:
+      variables === undefined
+        ? ['FindCharacterRankingSuspense']
+        : ['FindCharacterRankingSuspense', variables],
+    queryFn: gqlFetcher<
+      IFindCharacterRankingQuery,
+      IFindCharacterRankingQueryVariables
+    >(FindCharacterRankingDocument, variables),
+    ...options,
+  });
+};
+
+export const useInfiniteFindCharacterRankingQuery = <
+  TData = InfiniteData<IFindCharacterRankingQuery>,
+  TError = unknown,
+>(
+  variables: IFindCharacterRankingQueryVariables,
+  options: Omit<
+    UseInfiniteQueryOptions<IFindCharacterRankingQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseInfiniteQueryOptions<
+      IFindCharacterRankingQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useInfiniteQuery<IFindCharacterRankingQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey:
+          optionsQueryKey ?? variables === undefined
+            ? ['FindCharacterRanking.infinite']
+            : ['FindCharacterRanking.infinite', variables],
+        queryFn: (metaData) =>
+          gqlFetcher<
+            IFindCharacterRankingQuery,
+            IFindCharacterRankingQueryVariables
+          >(FindCharacterRankingDocument, {
+            ...variables,
+            ...(metaData.pageParam ?? {}),
+          })(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const useSuspenseInfiniteFindCharacterRankingQuery = <
+  TData = InfiniteData<IFindCharacterRankingQuery>,
+  TError = unknown,
+>(
+  variables: IFindCharacterRankingQueryVariables,
+  options: Omit<
+    UseSuspenseInfiniteQueryOptions<IFindCharacterRankingQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseInfiniteQueryOptions<
+      IFindCharacterRankingQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseInfiniteQuery<IFindCharacterRankingQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey:
+          optionsQueryKey ?? variables === undefined
+            ? ['FindCharacterRanking.infiniteSuspense']
+            : ['FindCharacterRanking.infiniteSuspense', variables],
+        queryFn: (metaData) =>
+          gqlFetcher<
+            IFindCharacterRankingQuery,
+            IFindCharacterRankingQueryVariables
+          >(FindCharacterRankingDocument, {
+            ...variables,
+            ...(metaData.pageParam ?? {}),
+          })(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const FindAverageEngravingDocument = `
+    query FindAverageEngraving($name: String!) {
+  findAverageEngraving(name: $name) {
+    count
+    engraving {
+      name
+      image_uri
+      id
+      class_yn
+      level
+    }
+  }
+}
+    `;
+
+export const useFindAverageEngravingQuery = <
+  TData = IFindAverageEngravingQuery,
+  TError = unknown,
+>(
+  variables: IFindAverageEngravingQueryVariables,
+  options?: Omit<
+    UseQueryOptions<IFindAverageEngravingQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseQueryOptions<
+      IFindAverageEngravingQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useQuery<IFindAverageEngravingQuery, TError, TData>({
+    queryKey: ['FindAverageEngraving', variables],
+    queryFn: gqlFetcher<
+      IFindAverageEngravingQuery,
+      IFindAverageEngravingQueryVariables
+    >(FindAverageEngravingDocument, variables),
+    ...options,
+  });
+};
+
+export const useSuspenseFindAverageEngravingQuery = <
+  TData = IFindAverageEngravingQuery,
+  TError = unknown,
+>(
+  variables: IFindAverageEngravingQueryVariables,
+  options?: Omit<
+    UseSuspenseQueryOptions<IFindAverageEngravingQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseQueryOptions<
+      IFindAverageEngravingQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseQuery<IFindAverageEngravingQuery, TError, TData>({
+    queryKey: ['FindAverageEngravingSuspense', variables],
+    queryFn: gqlFetcher<
+      IFindAverageEngravingQuery,
+      IFindAverageEngravingQueryVariables
+    >(FindAverageEngravingDocument, variables),
+    ...options,
+  });
+};
+
+export const useInfiniteFindAverageEngravingQuery = <
+  TData = InfiniteData<IFindAverageEngravingQuery>,
+  TError = unknown,
+>(
+  variables: IFindAverageEngravingQueryVariables,
+  options: Omit<
+    UseInfiniteQueryOptions<IFindAverageEngravingQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseInfiniteQueryOptions<
+      IFindAverageEngravingQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useInfiniteQuery<IFindAverageEngravingQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey: optionsQueryKey ?? [
+          'FindAverageEngraving.infinite',
+          variables,
+        ],
+        queryFn: (metaData) =>
+          gqlFetcher<
+            IFindAverageEngravingQuery,
+            IFindAverageEngravingQueryVariables
+          >(FindAverageEngravingDocument, {
+            ...variables,
+            ...(metaData.pageParam ?? {}),
+          })(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const useSuspenseInfiniteFindAverageEngravingQuery = <
+  TData = InfiniteData<IFindAverageEngravingQuery>,
+  TError = unknown,
+>(
+  variables: IFindAverageEngravingQueryVariables,
+  options: Omit<
+    UseSuspenseInfiniteQueryOptions<IFindAverageEngravingQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseInfiniteQueryOptions<
+      IFindAverageEngravingQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseInfiniteQuery<IFindAverageEngravingQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey: optionsQueryKey ?? [
+          'FindAverageEngraving.infiniteSuspense',
+          variables,
+        ],
+        queryFn: (metaData) =>
+          gqlFetcher<
+            IFindAverageEngravingQuery,
+            IFindAverageEngravingQueryVariables
+          >(FindAverageEngravingDocument, {
+            ...variables,
+            ...(metaData.pageParam ?? {}),
+          })(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const FindAverageStatsDocument = `
+    query FindAverageStats($name: String!) {
+  findAverageStats(name: $name) {
+    name
+    stats {
+      name
+      value
+    }
+  }
+}
+    `;
+
+export const useFindAverageStatsQuery = <
+  TData = IFindAverageStatsQuery,
+  TError = unknown,
+>(
+  variables: IFindAverageStatsQueryVariables,
+  options?: Omit<
+    UseQueryOptions<IFindAverageStatsQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseQueryOptions<
+      IFindAverageStatsQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useQuery<IFindAverageStatsQuery, TError, TData>({
+    queryKey: ['FindAverageStats', variables],
+    queryFn: gqlFetcher<
+      IFindAverageStatsQuery,
+      IFindAverageStatsQueryVariables
+    >(FindAverageStatsDocument, variables),
+    ...options,
+  });
+};
+
+export const useSuspenseFindAverageStatsQuery = <
+  TData = IFindAverageStatsQuery,
+  TError = unknown,
+>(
+  variables: IFindAverageStatsQueryVariables,
+  options?: Omit<
+    UseSuspenseQueryOptions<IFindAverageStatsQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseQueryOptions<
+      IFindAverageStatsQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseQuery<IFindAverageStatsQuery, TError, TData>({
+    queryKey: ['FindAverageStatsSuspense', variables],
+    queryFn: gqlFetcher<
+      IFindAverageStatsQuery,
+      IFindAverageStatsQueryVariables
+    >(FindAverageStatsDocument, variables),
+    ...options,
+  });
+};
+
+export const useInfiniteFindAverageStatsQuery = <
+  TData = InfiniteData<IFindAverageStatsQuery>,
+  TError = unknown,
+>(
+  variables: IFindAverageStatsQueryVariables,
+  options: Omit<
+    UseInfiniteQueryOptions<IFindAverageStatsQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseInfiniteQueryOptions<
+      IFindAverageStatsQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useInfiniteQuery<IFindAverageStatsQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey: optionsQueryKey ?? ['FindAverageStats.infinite', variables],
+        queryFn: (metaData) =>
+          gqlFetcher<IFindAverageStatsQuery, IFindAverageStatsQueryVariables>(
+            FindAverageStatsDocument,
+            { ...variables, ...(metaData.pageParam ?? {}) },
+          )(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const useSuspenseInfiniteFindAverageStatsQuery = <
+  TData = InfiniteData<IFindAverageStatsQuery>,
+  TError = unknown,
+>(
+  variables: IFindAverageStatsQueryVariables,
+  options: Omit<
+    UseSuspenseInfiniteQueryOptions<IFindAverageStatsQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseInfiniteQueryOptions<
+      IFindAverageStatsQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseInfiniteQuery<IFindAverageStatsQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey: optionsQueryKey ?? [
+          'FindAverageStats.infiniteSuspense',
+          variables,
+        ],
+        queryFn: (metaData) =>
+          gqlFetcher<IFindAverageStatsQuery, IFindAverageStatsQueryVariables>(
+            FindAverageStatsDocument,
+            { ...variables, ...(metaData.pageParam ?? {}) },
+          )(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const FindAverageWeaponDocument = `
+    query FindAverageWeapon($name: String!) {
+  findAverageWeapon(name: $name)
+}
+    `;
+
+export const useFindAverageWeaponQuery = <
+  TData = IFindAverageWeaponQuery,
+  TError = unknown,
+>(
+  variables: IFindAverageWeaponQueryVariables,
+  options?: Omit<
+    UseQueryOptions<IFindAverageWeaponQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseQueryOptions<
+      IFindAverageWeaponQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useQuery<IFindAverageWeaponQuery, TError, TData>({
+    queryKey: ['FindAverageWeapon', variables],
+    queryFn: gqlFetcher<
+      IFindAverageWeaponQuery,
+      IFindAverageWeaponQueryVariables
+    >(FindAverageWeaponDocument, variables),
+    ...options,
+  });
+};
+
+export const useSuspenseFindAverageWeaponQuery = <
+  TData = IFindAverageWeaponQuery,
+  TError = unknown,
+>(
+  variables: IFindAverageWeaponQueryVariables,
+  options?: Omit<
+    UseSuspenseQueryOptions<IFindAverageWeaponQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseQueryOptions<
+      IFindAverageWeaponQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseQuery<IFindAverageWeaponQuery, TError, TData>({
+    queryKey: ['FindAverageWeaponSuspense', variables],
+    queryFn: gqlFetcher<
+      IFindAverageWeaponQuery,
+      IFindAverageWeaponQueryVariables
+    >(FindAverageWeaponDocument, variables),
+    ...options,
+  });
+};
+
+export const useInfiniteFindAverageWeaponQuery = <
+  TData = InfiniteData<IFindAverageWeaponQuery>,
+  TError = unknown,
+>(
+  variables: IFindAverageWeaponQueryVariables,
+  options: Omit<
+    UseInfiniteQueryOptions<IFindAverageWeaponQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseInfiniteQueryOptions<
+      IFindAverageWeaponQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useInfiniteQuery<IFindAverageWeaponQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey: optionsQueryKey ?? ['FindAverageWeapon.infinite', variables],
+        queryFn: (metaData) =>
+          gqlFetcher<IFindAverageWeaponQuery, IFindAverageWeaponQueryVariables>(
+            FindAverageWeaponDocument,
+            { ...variables, ...(metaData.pageParam ?? {}) },
+          )(),
+        ...restOptions,
+      };
+    })(),
+  );
+};
+
+export const useSuspenseInfiniteFindAverageWeaponQuery = <
+  TData = InfiniteData<IFindAverageWeaponQuery>,
+  TError = unknown,
+>(
+  variables: IFindAverageWeaponQueryVariables,
+  options: Omit<
+    UseSuspenseInfiniteQueryOptions<IFindAverageWeaponQuery, TError, TData>,
+    'queryKey'
+  > & {
+    queryKey?: UseSuspenseInfiniteQueryOptions<
+      IFindAverageWeaponQuery,
+      TError,
+      TData
+    >['queryKey'];
+  },
+) => {
+  return useSuspenseInfiniteQuery<IFindAverageWeaponQuery, TError, TData>(
+    (() => {
+      const { queryKey: optionsQueryKey, ...restOptions } = options;
+      return {
+        queryKey: optionsQueryKey ?? [
+          'FindAverageWeapon.infiniteSuspense',
+          variables,
+        ],
+        queryFn: (metaData) =>
+          gqlFetcher<IFindAverageWeaponQuery, IFindAverageWeaponQueryVariables>(
+            FindAverageWeaponDocument,
+            { ...variables, ...(metaData.pageParam ?? {}) },
+          )(),
+        ...restOptions,
+      };
+    })(),
+  );
 };
 
 export const FindClassDocument = `

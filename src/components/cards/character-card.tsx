@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { PiKnifeFill } from 'react-icons/pi';
 
 type CharacterCardProps = {
   imgUrl: string;
@@ -16,7 +17,7 @@ const characterCard = ({
   battleLevel,
 }: CharacterCardProps) => {
   return (
-    <div className=" flex w-56 max-w-md flex-col overflow-hidden rounded-md bg-card shadow-md dark:bg-card-dark">
+    <div className="flex w-52 max-w-md flex-col overflow-hidden rounded-md bg-card shadow-lg dark:bg-card-dark">
       <div className="relative h-36">
         <Image
           src={
@@ -30,10 +31,25 @@ const characterCard = ({
           }}
         />
       </div>
-      <span>{name}</span>
-      <span>{classType}</span>
-      <span>레벨 {level}</span>
-      <span>전투 {battleLevel}</span>
+      <div className="flex flex-col p-2">
+        <span className="font-medium">{name}</span>
+        <span className="pb-2 text-sm text-gray-500">{classType}</span>
+        <div className="flex flex-row justify-between border-t border-gray-100 dark:border-gray-700">
+          <div className="flex flex-col">
+            <span className="pt-2 text-sm text-gray-500">레벨</span>
+            <span className="font-medium">
+              {battleLevel}
+              <span className="text-sm">.0</span>
+            </span>
+          </div>
+          <div className="flex flex-col">
+            <span className="pt-2 text-sm text-gray-500">무기</span>
+            <span className="text-sm">
+              +<span className="text-base font-medium">{'21'}</span>
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

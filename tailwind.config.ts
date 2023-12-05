@@ -25,9 +25,14 @@ const config: Config = {
         dark: '#252931',
         'card-dark': '#1c1f26',
         card: '#fdfdfd',
+        'character-dark': '#14181d',
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('tailwind-scrollbar'),
+    require('@tailwindcss/forms'),
+  ],
 };
 export default config;

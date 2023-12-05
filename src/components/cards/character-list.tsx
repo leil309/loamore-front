@@ -300,10 +300,10 @@ const characterList = () => {
     },
   ];
   return (
-    <div className="justify-content flex flex-wrap">
+    <div className="flex flex-wrap">
       {cl.map((x, index) => {
         return (
-          <div key={index} className="mb-2 mr-2">
+          <div key={index} className="mb-3 ml-3">
             <CharacterCard
               imgUrl={x.imgUrl}
               name={x.name}

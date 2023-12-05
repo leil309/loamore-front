@@ -18,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className="light">
-      <body className={noto.className}>
+      <body
+        className={`${noto.className} dark:bg-character-dark scrollbar scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-700 scrollbar-track-card dark:scrollbar-track-character-dark mx-auto max-w-screen-xl overflow-y-scroll bg-card`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>
